@@ -1,0 +1,1 @@
+\(t : Text) -> let t1 = "\""++(Text/show t) in Text/replace t1 "" (Text/replace "\"\"\"" "x" t1)
