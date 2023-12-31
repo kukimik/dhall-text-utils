@@ -1,4 +1,4 @@
-let notEmpty  = \(t : Text) -> (Text/replace t "x" t === "x")
+let notEmpty  = \(t : Text) -> (./helpers/nonempty2x.dhall t === "x")
 
 let example0 = assert : notEmpty "abc"
 
