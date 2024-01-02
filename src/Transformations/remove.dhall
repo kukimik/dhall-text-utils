@@ -7,7 +7,7 @@ Note that in result of this operation new occurences of `needle`
 may appear, which are **not** removed reursively.
 -}
 let remove
-    : Text → Text
+    : Text → Text → Text
     = λ(needle : Text) → λ(haystack : Text) →
         Text/replace needle "" haystack
 

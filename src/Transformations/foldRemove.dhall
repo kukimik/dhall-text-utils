@@ -2,10 +2,10 @@
 TODO: write docs
 -}
 let foldRemove
-    : List Text → Text
+    : List Text → Text → Text
     = λ(needles : List Text) →
       λ(haystack : Text) →
-        List/fold Text needles Text ./remove haystack
+        List/fold Text needles Text ./remove.dhall haystack
 
 let example0 = assert : foldRemove [ "c", "b", "a" ] "abcd" ≡ "d"
 
