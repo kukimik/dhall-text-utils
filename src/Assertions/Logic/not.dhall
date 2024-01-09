@@ -1,3 +1,3 @@
 let TextBool = ./TextBool.dhall
-let not : TextBool -> TextBool = \(v : TextBool) -> { vTB = Text/replace "xx" "" "${v.vTB}x") }
+let not : TextBool -> TextBool = \(v : TextBool) -> { vtb = Text/replace "xx" "" "${v.vtb}x" }
 in not
