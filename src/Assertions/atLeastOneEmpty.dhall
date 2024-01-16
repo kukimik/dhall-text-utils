@@ -1,1 +1,0 @@
-let atLeastOneEmpty = notEmpty (remove (Text.replicate (List/length ts) "x") (concatMap??? \(t : Text) -> replace t "x" ts)

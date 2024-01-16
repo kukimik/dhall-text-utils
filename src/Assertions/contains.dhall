@@ -1,7 +1,8 @@
+let or = ./Logic/or.dhall
 let contains =
       \(needle : Text) ->
       \(haystack : Text) ->
-            ./notEqual.dhall haystack ((./helpers/empty2x.dhall needle) ++ (Text/replace needle "" haystack))
+            or [./notEqual.dhall haystack (Text/replace needle "" haystack), ./empty.dhall needle]
 
 let example0 = assert : contains "a" "abc"
 
