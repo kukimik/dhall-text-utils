@@ -1,7 +1,16 @@
+-- if t === "" it outputs ""
+-- otherwise it outputs "x"
+let nonempty2x = λ(t : Text) → Text/replace t "x" t
+
 let Prelude = ../../Prelude.dhall
+
 let TextBool = ./TextBool.dhall
-let vtb = ./vtb.dhall
-let or : List TextBool -> TextBool =
-	\(vs : List TextBool) ->
-		{ vtb = ../helpers/nonempty2x.dhall (Prelude.Text.concatMap TextBool vtb vs) }
-in or
+
+let getVtb = λ(t : TextBool) → t.vtb
+
+let or
+    : List TextBool → TextBool
+    = λ(vs : List TextBool) →
+        { vtb = nonempty2x (Prelude.Text.concatMap TextBool getVtb vs) }
+
+in  or

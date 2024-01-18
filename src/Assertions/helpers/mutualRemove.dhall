@@ -1,1 +1,0 @@
-\(t1 : Text) -> \(t2 : Text) -> (Text/replace t1 "" t2) ++ (Text/replace t2 "" t1)

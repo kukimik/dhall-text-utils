@@ -1,4 +1,14 @@
-let hasPrefix = \(prefix : Text) -> \(text : Text) -> 
-	./notEqual.dhall text ((./helpers/empty2x prefix) ++ (Text/replace ../Transformations/stripPrefix prefix text))
+let or = ./Logic/or.dhall
 
-in hasPrefix
+let isEmpty = ./isEmpty.dhall
+
+let equals = ./equals.dhall
+
+let stripPrefix = ../Transformations/stripPrefix.dhall
+
+let hasPrefix =
+      λ(prefix : Text) →
+      λ(text : Text) →
+        or [ isEmpty prefix, not (equals text (stripPrefix prefix text)) ]
+
+in  hasPrefix
