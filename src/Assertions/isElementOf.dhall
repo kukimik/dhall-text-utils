@@ -1,4 +1,4 @@
-let any = ./Logic/any.dhall
+let any = ../Logic/any.dhall
 
 let equals = ./equals.dhall
 

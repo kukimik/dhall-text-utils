@@ -1,4 +1,4 @@
-let or = ./Logic/or.dhall
+let or = ../Logic/or.dhall
 
 let isEmpty = ./isEmpty.dhall
 

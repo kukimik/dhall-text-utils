@@ -1,6 +1,6 @@
-let true = ./Logic/true.dhall
+let true = ../Logic/true.dhall
 
-let false = ./Logic/false.dhall
+let false = ../Logic/false.dhall
 
 let isEmpty = ./isEmpty.dhall
 

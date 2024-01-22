@@ -1,1 +1,0 @@
-{ vtb = "" } : ./TextBool.dhall

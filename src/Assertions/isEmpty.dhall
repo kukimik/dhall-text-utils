@@ -1,10 +1,10 @@
-let TextBool = ./Logic/TextBool
+let TextBool = ../Logic/TextBool
 
 let empty2x = λ(t : Text) → Text/replace "xx" "" ("x" ++ Text/replace t "x" t)
 
-let true = ./Logic/true.dhall
+let true = ../Logic/true.dhall
 
-let false = ./Logic/false.dhall
+let false = ../Logic/false.dhall
 
 let isEmpty
     : λ(t : Text) → TextBool

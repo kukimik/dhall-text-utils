@@ -1,4 +1,4 @@
-let or = ./Logic/or.dhall
+let or = ../Logic/or.dhall
 
 let contains =
       λ(needle : Text) →

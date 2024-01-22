@@ -2,7 +2,7 @@
 -- otherwise it outputs "x"
 let nonempty2x = λ(t : Text) → Text/replace t "x" t
 
-let Prelude = ../../Prelude.dhall
+let Prelude = ../Prelude.dhall
 
 let TextBool = ./TextBool.dhall
 
