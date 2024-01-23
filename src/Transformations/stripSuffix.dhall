@@ -7,9 +7,9 @@ let stripSuffix
     : ∀(suffix : Text) → ∀(text : Text) → Text
     = λ(suffix : Text) →
       λ(text : Text) →
-        let helper = "^" ++ text
+        let helper = text ++ "$"
 
-        in  ./foldRemove.dhall [ helper, helper ++ suffix ] (helper ++ text)
+        in  ./foldRemove.dhall [ helper, suffix ++ helper ] (text ++ helper) --- BUG, use Text/show instead (helper may be contained in text + initial fragment of text (cotained in helper))
 
 let example0 = assert : stripSuffix "abc" "abcdef" ≡ "abcdef"
 

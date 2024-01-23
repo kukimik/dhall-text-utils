@@ -1,5 +1,5 @@
 let or = ../Logic/or.dhall
-
+let not = ../Logic/not.dhall
 let isEmpty = ./isEmpty.dhall
 
 let equals = ./equals.dhall

@@ -7,7 +7,7 @@ let isEmpty = ./isEmpty.dhall
 let mutualRemove =
       λ(t1 : Text) →
       λ(t2 : Text) →
-        Text/replace t1 "" t2 ++ Text/replace t2 "" t1
+        (Text/replace t1 "" t2) ++ (Text/replace t2 "" t1)
 
 let equals = λ(t1 : Text) → λ(t2 : Text) → isEmpty (mutualRemove t1 t2)
 

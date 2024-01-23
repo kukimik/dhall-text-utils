@@ -1,6 +1,6 @@
 let any = ../Logic/any.dhall
-let TextBool = ../Logic/contains.dhall
+let TextBool = ../Logic/TextBool.dhall
 let isContainedIn = ./isContainedIn.dhall
-let containsOneOf : ( ts : List Text ) -> ( t : Text ) -> TextBool
+let containsOneOf : ∀( ts : List Text ) -> ∀( t : Text ) -> TextBool
  = \( ts : List Text ) -> \( t : Text ) -> any Text (isContainedIn t) ts 
 in containsOneOf
