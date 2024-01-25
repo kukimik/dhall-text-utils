@@ -1,5 +1,4 @@
-let isEmpty = ./isEmpty.dhall
-let foldRemove = ../Transformations/foldRemove.dhall
+let consistsOf = ./consistsOf.dhall
 let ASCII = ../CharacterClasses/ASCII.dhall
-let isASCII = \(t : Text) -> isEmpty (foldRemove ASCII t)
+let isASCII = consistsOf ASCII
 in isASCII
