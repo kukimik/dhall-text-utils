@@ -7,7 +7,7 @@ let stripPrefix
     : ∀(prefix : Text) → ∀(text : Text) → Text
     = λ(prefix : Text) →
       λ(text : Text) →
-        let helper = "^" ++ text
+        let helper = "\t${Text/show text}" --"^" ++ text
 
         in  ./foldRemove.dhall [ helper, helper ++ prefix ] (helper ++ text)
 

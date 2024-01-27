@@ -7,7 +7,7 @@ let stripSuffix
     : ∀(suffix : Text) → ∀(text : Text) → Text
     = λ(suffix : Text) →
       λ(text : Text) →
-        let helper = text ++ "$"
+        let helper = "${Text/show text}\t"
 
         in  ./foldRemove.dhall [ helper, suffix ++ helper ] (text ++ helper) --- BUG, use Text/show instead (helper may be contained in text + initial fragment of text (cotained in helper))
 
