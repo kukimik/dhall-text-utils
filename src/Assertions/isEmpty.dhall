@@ -1,17 +1,21 @@
+{-|
+Returns `true` if `text` is the empty string `""`.
+Returns `false` otherwise.
+-}
+let isTrue = ../Logic/isTrue.dhall
+
+let isFalse = ../Logic/isFalse.dhall
+
 let TextBool = ../Logic/TextBool.dhall
 
 let empty2x = λ(t : Text) → Text/replace "xx" "" ("x" ++ Text/replace t "x" t)
 
-let true = ../Logic/true.dhall
-
-let false = ../Logic/false.dhall
-
 let isEmpty
-    : ∀(t : Text) → TextBool
-    = λ(t : Text) → { vtb = empty2x t }
+    : ∀(text : Text) → TextBool
+    = λ(text : Text) → { vtb = empty2x text }
 
-let example0 = assert : isEmpty "abc" ≡ false
+let example0 = assert : isFalse (isEmpty "abc")
 
-let example1 = assert : isEmpty "" ≡ true
+let example1 = assert : isTrue (isEmpty "")
 
 in  isEmpty
