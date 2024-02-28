@@ -16,7 +16,7 @@ let isEmpty = ./isEmpty.dhall
 
 let equals = ./equals.dhall
 
-let stripSuffix = ../Transformations/stripPrefix.dhall
+let stripSuffix = ../Transformations/stripSuffix.dhall
 
 let hasSuffix =
       λ(suffix : Text) →
@@ -25,9 +25,9 @@ let hasSuffix =
 
 let example0 = assert : isFalse (hasSuffix "ab" "abcd")
 
-let example1 = assert : isTrue (hasSuffix "abcd" "cd")
+let example1 = assert : isTrue (hasSuffix "cd" "abcd")
 
-let example2 = assert : isTrue (hasSuffix "abcd" "")
+let example2 = assert : isTrue (hasSuffix "" "abcd")
 
 let example3 = assert : isTrue (hasSuffix "" "")
 

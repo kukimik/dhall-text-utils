@@ -27,7 +27,7 @@ let example0 = assert : isTrue (hasPrefix "ab" "abcd")
 
 let example1 = assert : isFalse (hasPrefix "abcd" "cd")
 
-let example2 = assert : isTrue (hasPrefix "abcd" "")
+let example2 = assert : isTrue (hasPrefix "" "abcd")
 
 let example3 = assert : isTrue (hasPrefix "" "")
 

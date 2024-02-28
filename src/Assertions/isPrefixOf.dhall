@@ -16,7 +16,7 @@ let example0 = assert : isTrue (isPrefixOf "abcd" "ab")
 
 let example1 = assert : isFalse (isPrefixOf "cd" "abcd")
 
-let example2 = assert : isTrue (isPrefixOf "" "abcd")
+let example2 = assert : isTrue (isPrefixOf "abcd" "")
 
 let example3 = assert : isTrue (isPrefixOf "" "")
 
