@@ -10,10 +10,10 @@ let any = ../Logic/any.dhall
 
 let equals = ./equals.dhall
 
-let isElementOf = λ(t : Text) → λ(ts : List Text) → any Text (equals t)
+let isElementOf =  λ(ts : List Text) → λ(t : Text) → any Text (equals t) ts
 
-let example0 = assert : isTrue (isElementOf "world" [ "Hello", "world", "!" ])
+let example0 = assert : isTrue (isElementOf [ "red", "green", "blue" ] "green")
 
-let example1 = assert : isFalse (isElementOf "cyan" [ "red", "green", "blue" ])
+let example1 = assert : isFalse (isElementOf [ "red", "green", "blue" ] "cyan")
 
 in  isElementOf
