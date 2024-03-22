@@ -7,6 +7,7 @@
 ,hasLengthAtMost = ./hasLengthAtMost.dhall
 ,hasLength = ./hasLength.dhall
 ,hasPrefix = ./hasPrefix.dhall
+,hasSubstringOfLengthAtLeastConsistingOf = ./hasSubstringOfLengthAtLeastConsistingOf.dhall
 ,hasSuffix = ./hasSuffix.dhall
 ,isASCII = ./isASCII.dhall
 ,isContainedIn = ./isContainedIn.dhall

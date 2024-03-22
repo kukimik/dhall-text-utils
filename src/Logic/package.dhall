@@ -2,6 +2,7 @@
  all = ./all.dhall
 ,and = ./and.dhall
 ,any = ./any.dhall
+,bool2TextBool = ./bool2TextBool.dhall
 ,exactlyOne = ./exactlyOne.dhall
 ,false = ./false.dhall
 ,ifThenElse = ./ifThenElse.dhall
