@@ -1,4 +1,4 @@
-{-
+{-|
 Lists of characters (represented as `Text` values consisting of
 a single character) of various types. 
 -}

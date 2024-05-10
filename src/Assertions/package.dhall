@@ -3,9 +3,9 @@
 ,contains = ./contains.dhall
 ,containsOneOf = ./containsOneOf.dhall
 ,equals = ./equals.dhall
-,hasLengthAtLeast = ./hasLengthAtLeast.dhall
-,hasLengthAtMost = ./hasLengthAtMost.dhall
-,hasLength = ./hasLength.dhall
+,hasLengthAtLeastUsing = ./hasLengthAtLeastUsing.dhall
+,hasLengthAtMostUsing = ./hasLengthAtMostUsing.dhall
+,hasLengthUsing = ./hasLengthUsing.dhall
 ,hasPrefix = ./hasPrefix.dhall
 ,hasSubstringOfLengthAtLeastConsistingOf = ./hasSubstringOfLengthAtLeastConsistingOf.dhall
 ,hasSuffix = ./hasSuffix.dhall
