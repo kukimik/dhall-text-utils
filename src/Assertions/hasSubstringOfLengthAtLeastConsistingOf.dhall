@@ -6,7 +6,7 @@ let isFalse = ../Logic/isFalse.dhall
 let isContainedIn = ./isContainedIn.dhall
 
 let hasSubstringOfLengthAtLeastConsistingOf : ∀(length : Natural) -> ∀(characters : List Text) -> ∀(text : Text) -> TextBool
-	  = missing {-} \(length : Natural) -> \(characters : List Text) -> \(text : Text) ->
+	  = \(length : Natural) -> \(characters : List Text) -> \(text : Text) ->
 	  	merge
 	  		{
 	  		 None = bool2TextBool (Natural/isZero length)
@@ -23,5 +23,10 @@ let example1 =
 	assert : isFalse (hasSubstringOfLengthAtLeastConsistingOf 4 ["0","1","2","3","4"] "aaa123bbb")
 let example2 =
 	assert : isTrue (hasSubstringOfLengthAtLeastConsistingOf 0 ([] : List Text) "")
--}
+let example3 =
+	assert : isTrue (hasSubstringOfLengthAtLeastConsistingOf 0 (["x"] : List Text) "")
+let example4 =
+	assert : isFalse (hasSubstringOfLengthAtLeastConsistingOf 1 ([] : List Text) "abc")
+let example4 =
+	assert : isTrue (hasSubstringOfLengthAtLeastConsistingOf 0 ([] : List Text) "abc")
 in hasSubstringOfLengthAtLeastConsistingOf
