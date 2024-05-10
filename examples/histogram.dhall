@@ -1,7 +1,7 @@
 let L = ../src/Logic/package.dhall
 let A = ../src/Assertions/package.dhall
 
-let block = "*"
+let block = "▬"
 let histogram = \(ws : List Text) ->
 	let f = \(w : Text) -> \(h : Text) ->
 		let w1 = "\t${Text/show w}\n"
