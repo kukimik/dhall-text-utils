@@ -6,27 +6,27 @@ let isFalse = ../Logic/isFalse.dhall
 let isContainedIn = ./isContainedIn.dhall
 
 let hasSubstringOfLengthAtLeastConsistingOf : ∀(length : Natural) -> ∀(characters : List Text) -> ∀(text : Text) -> TextBool
-	  = \(length : Natural) -> \(characters : List Text) -> \(text : Text) ->
-	  	merge
-	  		{
-	  		 None = bool2TextBool (Natural/isZero length)
-	  		,Some =
-	  			\(char : Text) ->
-		  			isContainedIn
-		  				(List/fold Text characters Text (\(c : Text) -> Text/replace c char) text)
-		  				(Prelude.Text.replicate length char)
-	  		}
-	  		(List/head Text characters)
+      = \(length : Natural) -> \(characters : List Text) -> \(text : Text) ->
+        merge
+            {
+             None = bool2TextBool (Natural/isZero length)
+            ,Some =
+                \(char : Text) ->
+                    isContainedIn
+                        (List/fold Text characters Text (\(c : Text) -> Text/replace c char) text)
+                        (Prelude.Text.replicate length char)
+            }
+            (List/head Text characters)
 let example0 =
-	assert : isTrue (hasSubstringOfLengthAtLeastConsistingOf 3 ["0","1","2","3","4"] "aaa123bbb")
+    assert : isTrue (hasSubstringOfLengthAtLeastConsistingOf 3 ["0","1","2","3","4"] "aaa123bbb")
 let example1 =
-	assert : isFalse (hasSubstringOfLengthAtLeastConsistingOf 4 ["0","1","2","3","4"] "aaa123bbb")
+    assert : isFalse (hasSubstringOfLengthAtLeastConsistingOf 4 ["0","1","2","3","4"] "aaa123bbb")
 let example2 =
-	assert : isTrue (hasSubstringOfLengthAtLeastConsistingOf 0 ([] : List Text) "")
+    assert : isTrue (hasSubstringOfLengthAtLeastConsistingOf 0 ([] : List Text) "")
 let example3 =
-	assert : isTrue (hasSubstringOfLengthAtLeastConsistingOf 0 (["x"] : List Text) "")
+    assert : isTrue (hasSubstringOfLengthAtLeastConsistingOf 0 (["x"] : List Text) "")
 let example4 =
-	assert : isFalse (hasSubstringOfLengthAtLeastConsistingOf 1 ([] : List Text) "abc")
+    assert : isFalse (hasSubstringOfLengthAtLeastConsistingOf 1 ([] : List Text) "abc")
 let example4 =
-	assert : isTrue (hasSubstringOfLengthAtLeastConsistingOf 0 ([] : List Text) "abc")
+    assert : isTrue (hasSubstringOfLengthAtLeastConsistingOf 0 ([] : List Text) "abc")
 in hasSubstringOfLengthAtLeastConsistingOf
