@@ -1,4 +1,4 @@
-{-
+{-|
 List of all printable ASCII characters (from `\u0020` to `\u007E`).
 -}
 let ASCIIprintable =

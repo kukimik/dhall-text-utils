@@ -1,4 +1,4 @@
-{-
+{-|
 List of all ASCII characters that are lowercase letters.
 -}
 let ASCIIlower =

@@ -1,4 +1,4 @@
-{-
+{-|
 List of all ASCII alphanumeric characters.
 -}
 let ASCIIalpha = ./ASCIIalpha.dhall

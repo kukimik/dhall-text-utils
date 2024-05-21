@@ -1,4 +1,4 @@
-{-
+{-|
 List of all ASCII characters (from `\u0000` to `\u007F`).
 -}
 let ASCII =

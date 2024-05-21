@@ -1,4 +1,4 @@
-{-
+{-|
 List of all ASCII control characters (`\u0000` to `\u001F` and `\u007F`).
 -}
 let ASCIIcontrol =

@@ -1,4 +1,4 @@
-{- The unique `TextBool` value corresponding to false. -}
+{-| The unique `TextBool` value corresponding to false. -}
 let TextBool = ./TextBool.dhall
 
 let false
