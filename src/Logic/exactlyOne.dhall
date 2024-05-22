@@ -22,17 +22,17 @@ let exactlyOne
         xor (Prelude.List.map a TextBool f vs)
 
 let example0 =
-      let equals = ../Assertions/equals.dhall
+      let equals = ../Predicates/equals.dhall
 
       in  true ≡ exactlyOne Text (equals "a") [ "a", "b", "c", "d" ]
 
 let example1 =
-      let isEmpty = ../Assertions/isEmpty.dhall
+      let isEmpty = ../Predicates/isEmpty.dhall
 
       in  false ≡ exactlyOne Text isEmpty [ "I am not empty.", "", "Hello!" ]
 
 let example2 =
-      let isEmpty = ../Assertions/isEmpty.dhall
+      let isEmpty = ../Predicates/isEmpty.dhall
 
       in  false ≡ exactlyOne Text isEmpty [ "I am not empty.", "", "" ]
 

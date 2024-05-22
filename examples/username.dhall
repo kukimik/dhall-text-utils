@@ -10,7 +10,7 @@ recommendations for a Linux username specified in the man page of `useradd`:
 > Usernames may only be up to 32 characters long.
 -}
 let L = ../src/Logic/package.dhall
-let A = ../src/Assertions/package.dhall
+let P = ../src/Predicates/package.dhall
 let C = ../src/CharacterClasses/package.dhall
 let T = ../src/Transformations/package.dhall
 let goodUsername = \(username : Text) ->
@@ -21,9 +21,9 @@ let goodUsername = \(username : Text) ->
 	let maxLength = 32
 	let conditions =
 		[
-		 L.any Text (A.isPrefixOf usernameWithoutTrailingDollar) allowedFirstChars
-		,A.consistsOf allowedInteriorChars usernameWithoutTrailingDollar
-		,L.not (A.hasSubstringOfLengthAtLeastConsistingOf (maxLength + 1) allowedChars username)
+		 L.any Text (P.isPrefixOf usernameWithoutTrailingDollar) allowedFirstChars
+		,P.consistsOf allowedInteriorChars usernameWithoutTrailingDollar
+		,L.not (P.hasSubstringOfLengthAtLeastConsistingOf (maxLength + 1) allowedChars username)
 		]
 	in L.and conditions
 let example0 = assert : L.isTrue (goodUsername "_bob123$")

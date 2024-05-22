@@ -8,7 +8,7 @@ let TextBool = ./TextBool.dhall
 
 let getVtb = λ(t : TextBool) → t.vtb
 
-let equals = ../Assertions/equals.dhall
+let equals = ../Predicates/equals.dhall
 
 let true = ./true.dhall
 

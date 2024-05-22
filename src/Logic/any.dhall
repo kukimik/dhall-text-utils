@@ -22,12 +22,12 @@ let any
         or (Prelude.List.map a TextBool f vs)
 
 let example0 =
-      let contains = ../Assertions/contains.dhall
+      let contains = ../Predicates/contains.dhall
 
       in  true ≡ any Text (contains "a") [ "b", "abc", "def", "baba" ]
 
 let example1 =
-      let isEmpty = ../Assertions/isEmpty.dhall
+      let isEmpty = ../Predicates/isEmpty.dhall
 
       in  false ≡ any Text isEmpty [ "I am not empty.", "Hi!", "Hello!" ]
 

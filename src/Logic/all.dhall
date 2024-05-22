@@ -22,7 +22,7 @@ let all
         and (Prelude.List.map a TextBool predicate vs)
 
 let example0 =
-      let contains = ../Assertions/contains.dhall
+      let contains = ../Predicates/contains.dhall
 
       in    true
           ≡ all
@@ -34,7 +34,7 @@ let example0 =
               ]
 
 let example1 =
-      let isEmpty = ../Assertions/isEmpty.dhall
+      let isEmpty = ../Predicates/isEmpty.dhall
 
       in  false ≡ all Text isEmpty [ "", "I am not empty.", "", "" ]
 
