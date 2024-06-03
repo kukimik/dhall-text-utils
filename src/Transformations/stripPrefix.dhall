@@ -1,7 +1,7 @@
 {-|
-If `prefix` is a prefix of the string `text`, the `stripPrefix`
-function returns `text` with the prefix removed. Otherwise
-it returns unchanged `text`.
+The function takes two strings. If the first one is a prefix
+of the second, it returns the remainder of the second string.
+Otherwise it returns the second string unchanged.
 -}
 let stripPrefix
     : ∀(prefix : Text) → ∀(text : Text) → Text

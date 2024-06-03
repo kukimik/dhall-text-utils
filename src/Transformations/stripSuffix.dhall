@@ -1,7 +1,7 @@
 {-|
-If `suffix` is a suffix of the string `text`, the `stripSuffix`
-function returns `text` with the suffix removed. Otherwise
-it returns unchanged `text`.
+The function takes two strings. If the first one is a suffix
+of the second, it returns the remainder of the second string.
+Otherwise it returns the second string unchanged.
 -}
 let stripSuffix
     : ∀(suffix : Text) → ∀(text : Text) → Text

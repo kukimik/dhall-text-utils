@@ -1,5 +1,5 @@
 {-|
-A collection of functions used to modify `Text` values.
+Utilities for modifying `Text` values.
 -}
 {
  applyAll = ./applyAll.dhall
