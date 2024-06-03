@@ -34,7 +34,7 @@ let ASCIIcontrol =
       , "\u001D"
       , "\u001E"
       , "\u001F"
-      , ""
+      , "\u007F"
       ]
 
 in  ASCIIcontrol

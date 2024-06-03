@@ -1,4 +1,4 @@
-{-||
+{-|
 Lists of characters (represented as `Text` values consisting of
 a single character) of various types. 
 -}
@@ -11,4 +11,5 @@ a single character) of various types.
 ,ASCIIlower = ./ASCIIlower.dhall
 ,ASCIIprintable = ./ASCIIprintable.dhall
 ,ASCIIupper = ./ASCIIupper.dhall
+,unicodeControl = ./unicodeControl.dhall
 }
