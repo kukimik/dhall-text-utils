@@ -7,14 +7,21 @@ The `Text` type in Dhall is opaque by design. It is impossible to inspect the va
 ```dhall
 let L = ./src/Logic/package.dhall
 let P = ./src/Predicates/package.dhall
+let Prelude = ./src/Prelude.dhall
+
+let animals = ["aardvark", "hippo", "dog", "chimpanzee", "cat", "chickadee", "flapper", "manatee","aardwolf"]
 
 let f : Text -> Text =
-    \t -> L.ifThenElse
-            (L.any [P.hasPrefix "aaa", P.hasPrefix "bb", P.contains "c"])
-            (t ++ " starts with 'aaa' or ends with 'bb' or contains 'c'!")
-            (t ++ " is not very interesting")
+    \(t : Text)
+        -> "${Text/show t} "
+            ++
+           L.ifThenElse
+            (L.or [P.hasPrefix "aa" t, P.hasSuffix "ee" t, P.contains "pp" t])
+            ("starts with \"aa\", or ends with \"ee\", or contains \"pp\"!")
+            ("is not very interesting")
 
-in List/map (Text)
+in  Prelude.Text.concatSep "\n"
+        (Prelude.List.map Text Text f animals)
 ```
 
 validate `Text` values at the type-checking phase:
@@ -25,35 +32,47 @@ let P = ./src/Predicates/package.dhall
 
 let badWords = ["adults", "only", "really", "bad", "swear", "words"]
 
-let rhyme = "As I went up the apple tree\nAll the apples fell on me.\nApple pudding, apple pie\nDid you ever tell a lie?"
+let rhyme =
+    ''
+    As I went up the apple tree
+    All the apples fell on me.
+    Apple pudding, apple pie
+    Did you ever tell a lie?
+    ''
 
 let test = assert : L.isFalse (P.containsOneOf badWords rhyme)
 
-in blogPost
+in rhyme
 ```
 
-or use dependent types to control function input:
+or use dependent types to control allowed function input:
 
 ```dhall
 let L = ./src/Logic/package.dhall
 let P = ./src/Predicates/package.dhall
-let C = ./src/CharacterClasses/package.dhall
 
-let  encircle: ∀(stringOfDigits : Text) ->  (L.isTrue (P.consistsOf C.ASCIIdigit stringOfDigits)) -> Text =
-    \stringOfDigits -> \_proof ->
-        Text/replace "0" "⓪"
-        (Text/replace "1" "①"
-        (Text/replace "2" "②"
-        (Text/replace "3" "③"
-        (Text/replace "4" "④"
-        (Text/replace "5" "⑤"
-        (Text/replace "6" "⑥"
-        (Text/replace "7" "⑦"
-        (Text/replace "8" "⑧"
-        (Text/replace "9" "⑨" stringOfDigits)))))))))
+let hexDigits = ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"]
 
+let  hex2binary: ∀(hex : Text) ->  (L.isTrue (P.consistsOf hexDigits hex)) -> Text =
+    \(hex : Text) -> \(_ : L.isTrue (P.consistsOf hexDigits hex)) ->
+         Text/replace "F" "1111"
+        (Text/replace "E" "1110"
+        (Text/replace "D" "1101"
+        (Text/replace "C" "1100"
+        (Text/replace "B" "1011"
+        (Text/replace "A" "1010"
+        (Text/replace "9" "1001"
+        (Text/replace "8" "1000"
+        (Text/replace "7" "0111"
+        (Text/replace "6" "0110"
+        (Text/replace "5" "0101"
+        (Text/replace "4" "0100"
+        (Text/replace "3" "0011"
+        (Text/replace "2" "0010"
+        (Text/replace "1" "0001"
+        (Text/replace "0" "0000" hex )))))))))))))))
 
-in encircle "32167" L.QED
+in hex2binary "BADF00D" L.QED
 ```
 
 And some parser-like capabilities are in the making!
