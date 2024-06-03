@@ -50,36 +50,63 @@ or use dependent types to control allowed function input:
 ```dhall
 let L = ./src/Logic/package.dhall
 let P = ./src/Predicates/package.dhall
+let T = ./src/Transformations/package.dhall
 
 let hexDigits = ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"]
 
 let  hex2binary: ∀(hex : Text) ->  (L.isTrue (P.consistsOf hexDigits hex)) -> Text =
     \(hex : Text) -> \(_ : L.isTrue (P.consistsOf hexDigits hex)) ->
-         Text/replace "F" "1111"
-        (Text/replace "E" "1110"
-        (Text/replace "D" "1101"
-        (Text/replace "C" "1100"
-        (Text/replace "B" "1011"
-        (Text/replace "A" "1010"
-        (Text/replace "9" "1001"
-        (Text/replace "8" "1000"
-        (Text/replace "7" "0111"
-        (Text/replace "6" "0110"
-        (Text/replace "5" "0101"
-        (Text/replace "4" "0100"
-        (Text/replace "3" "0011"
-        (Text/replace "2" "0010"
-        (Text/replace "1" "0001"
-        (Text/replace "0" "0000" hex )))))))))))))))
+        T.applyAll
+            [Text/replace "F" "1111"
+            ,Text/replace "E" "1110"
+            ,Text/replace "D" "1101"
+            ,Text/replace "C" "1100"
+            ,Text/replace "B" "1011"
+            ,Text/replace "A" "1010"
+            ,Text/replace "9" "1001"
+            ,Text/replace "8" "1000"
+            ,Text/replace "7" "0111"
+            ,Text/replace "6" "0110"
+            ,Text/replace "5" "0101"
+            ,Text/replace "4" "0100"
+            ,Text/replace "3" "0011"
+            ,Text/replace "2" "0010"
+            ,Text/replace "1" "0001"
+            ,Text/replace "0" "0000"
+            ]
+            hex
 
 in hex2binary "BADF00D" L.QED
 ```
 
 And some parser-like capabilities are in the making!
 
-See the [`examples/`](./examples/) directory for some more involved applications.
+More examples can be found in the [`examples/`](./examples/) directory.
 
-## Intended audience
+## Some comments
 
-## Why
+The library was created out of curiosity. I wanted to see how far I can get with validation and manipulation of `Text`
+values using the limited `Text` toolbox of Dhall. It was great fun! (Well, except for writing the docs.)
 
+While writing it I mostly thought about extending the library with new capabilities, making the API simple and keeping
+the code readable. Performance was never a goal.
+
+The following discussions gave me some inspiration:
+
+* https://github.com/dhall-lang/dhall-lang/issues/1035
+* https://github.com/dhall-lang/dhall-lang/pull/669#issuecomment-515748801
+
+Note that some of the possibilities that the library gives are strongly against the philosophy of Dhall (and good programming
+practices), e.g. it allows to string-encode some of the business logic instead of keeping it at the type level.
+
+I do not advise to use `dhall-text-utils` in production. The performance is probably very poor (it was never benchmarked)
+and while some improvements are definitely possible, the whole idea is just a big workaround and showcase. The library
+was also not test thoroughly.
+
+Perhaps, once it is demonstrated that Dhall already allows for these operations, some of them may be included in a future
+language standard?
+
+## Implementation details
+
+* sketch how it works
+* TextBool - may change
