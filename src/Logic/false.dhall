@@ -3,6 +3,6 @@ let TextBool = ./TextBool.dhall
 
 let false
     : TextBool
-    = { vtb = "" }
+    = { `80b81b0c0bbf55ebb04bdadd9c70094a` = "" }
 
 in  false

@@ -14,8 +14,8 @@ let ifThenElse =
       λ(condition : TextBool) →
       λ(valueIfTrue : Text) →
       λ(valueIfFalse : Text) →
-            Text/replace "x" valueIfTrue condition.vtb
-        ++  Text/replace "x" valueIfFalse (not condition).vtb
+            Text/replace "x" valueIfTrue condition.`80b81b0c0bbf55ebb04bdadd9c70094a`
+        ++  Text/replace "x" valueIfFalse (not condition).`80b81b0c0bbf55ebb04bdadd9c70094a`
 
 let example0 = "a" ≡ ifThenElse true "a" "b"
 

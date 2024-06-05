@@ -1,4 +1,4 @@
-{-
+{-|
 A type that reperesents true and false values as text.
 
 `TextBool` values **should not** be constructed or inspected
@@ -12,4 +12,4 @@ the `true` and `false` constants. Behaviour of functions
 in this library is unspecifid for any other of the (infinitely
 many) possible `TextBool` values.
 -}
-let TextBool = { vtb : Text } in TextBool
+let TextBool = { `80b81b0c0bbf55ebb04bdadd9c70094a` : Text } in TextBool

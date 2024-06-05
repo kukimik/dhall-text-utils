@@ -12,7 +12,7 @@ let empty2x = λ(t : Text) → Text/replace "xx" "" ("x" ++ Text/replace t "x" t
 
 let isEmpty
     : ∀(text : Text) → TextBool
-    = λ(text : Text) → { vtb = empty2x text }
+    = λ(text : Text) → { `80b81b0c0bbf55ebb04bdadd9c70094a` = empty2x text }
 
 let example0 = assert : isFalse (isEmpty "abc")
 

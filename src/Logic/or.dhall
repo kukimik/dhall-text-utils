@@ -10,7 +10,7 @@ let Prelude = ../Prelude.dhall
 
 let TextBool = ./TextBool.dhall
 
-let getVtb = λ(t : TextBool) → t.vtb
+let getVtb = λ(t : TextBool) → t.`80b81b0c0bbf55ebb04bdadd9c70094a`
 
 let true = ./true.dhall
 
@@ -19,7 +19,7 @@ let false = ./false.dhall
 let or
     : List TextBool → TextBool
     = λ(vs : List TextBool) →
-        { vtb = nonempty2x (Prelude.Text.concatMap TextBool getVtb vs) }
+        { `80b81b0c0bbf55ebb04bdadd9c70094a` = nonempty2x (Prelude.Text.concatMap TextBool getVtb vs) }
 
 let example0 = true ≡ or [ false, true, true ]
 

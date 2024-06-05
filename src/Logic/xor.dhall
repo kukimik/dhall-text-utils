@@ -1,4 +1,4 @@
-{-
+{-|
 Given a list of `TextBool` values returns `true` if exactly one
 element of the list is `true` and returns `false` otherwise.
 -}
@@ -6,7 +6,7 @@ let Prelude = ../Prelude.dhall
 
 let TextBool = ./TextBool.dhall
 
-let getVtb = λ(t : TextBool) → t.vtb
+let getVtb = λ(t : TextBool) → t.`80b81b0c0bbf55ebb04bdadd9c70094a`
 
 let equals = ../Predicates/equals.dhall
 
