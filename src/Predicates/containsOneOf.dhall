@@ -1,5 +1,6 @@
 {-|
-Returns `true` if `t` contains at least one of `ts` as a substring.
+Returns `true` if the second argument contains at least one element of the first
+argument as a substring.
 Returns `false` otherwise.
 -}
 let isTrue = ../Logic/isTrue.dhall

@@ -1,5 +1,5 @@
 {-|
-Returns `true` if `prefix` is a prefix of `text`.
+Returns `true` if the second argument is a prefix of the first argument.
 Returns `false` otherwise.
 
 Note that this is `hasPrefix` with reversed argument order.

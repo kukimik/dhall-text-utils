@@ -1,5 +1,5 @@
 {-|
-Returns `true` if the `Text` values `t1` and `t2` are the same.
+Returns `true` if both of its arguments are equal.
 Returns `false` otherwise.
 -}
 let isTrue = ../Logic/isTrue.dhall

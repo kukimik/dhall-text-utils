@@ -1,8 +1,11 @@
 {-|
-Given a character class `characters` returns `true` if `text` consists entirely of
-characters belonging to `characters` and returns `false` otherwise.
+The first argument should be a a character class.
 
-Behaviour is undefined if `characters` is not a character class.
+Under this assumption the function returns `true` if the second argument
+consists entirely of characters belonging to first argument, and returns `false`
+otherwise.
+
+Behaviour is undefined if the firsr argument is not a character class.
 -}
 let isTrue = ../Logic/isTrue.dhall
 

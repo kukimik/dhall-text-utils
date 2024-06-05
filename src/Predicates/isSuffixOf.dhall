@@ -1,5 +1,5 @@
 {-|
-Returns `true` if `suffix` is a suffix of `text`.
+Returns `true` if the second argument is a suffix of the first argument.
 Returns `false` otherwise.
 
 Note that this is `hasSuffix` with reversed argument order.

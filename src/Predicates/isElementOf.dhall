@@ -1,5 +1,5 @@
 {-|
-Returns `true` if `t` is an element of `ts`.
+Returns `true` if the second argument is an element of the first argument.
 Returns `false` otherwise.
 -}
 let isTrue = ../Logic/isTrue.dhall

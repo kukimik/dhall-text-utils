@@ -1,6 +1,6 @@
 {-|
-Returns `true` if `needle` is a substring of `haystack`
-and `false` otherwise.
+Returns `true` if the first argument is a substring of the second argument.
+Returns `false` otherwise.
 
 Note that this is `isContainedIn` with reversed argument order.
 -}

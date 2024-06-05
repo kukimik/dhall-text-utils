@@ -1,5 +1,5 @@
 {-|
-Returns `false` if `text` contains any non-ASCII characters.
+Returns `false` if its argument contains any non-ASCII characters.
 Returns `true` otherwise.
 -}
 let isTrue = ../Logic/isTrue.dhall

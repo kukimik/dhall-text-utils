@@ -1,5 +1,5 @@
 {-|
-Returns `true` if `text` is the empty string `""`.
+Returns `true` if its argument is the empty string `""`.
 Returns `false` otherwise.
 -}
 let isTrue = ../Logic/isTrue.dhall

@@ -1,5 +1,5 @@
 {-|
-Returns `true` if `needle` is a substring of `haystack`
+Returns `true` if the second argument is a substring of the first argument.
 and `false` otherwise.
 
 Note that this is `contains` with reversed argument order.
