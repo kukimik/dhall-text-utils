@@ -1,4 +1,4 @@
-{-
+{-|
 Natural arithmetic encoded in `Text`.
 -}
 let Prelude = ../src/Prelude.dhall

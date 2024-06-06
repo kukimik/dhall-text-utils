@@ -1,5 +1,5 @@
 {-|
-Contains the definition of the `TextBool` type, used to encode the Boolean values True/False as text,
+The definition of the `TextBool` type, used to encode the Boolean values True/False as text,
 and some related functions and helpers, including:
 
 * the Boolean operators: `and`, `or`, `xor`, `not`;

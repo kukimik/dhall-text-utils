@@ -1,4 +1,4 @@
-{-
+{-|
 Given a list of words the `histogram` function returns an ASCII-art histogram
 showing the frequency of the words in the list.
 

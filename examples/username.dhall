@@ -1,13 +1,15 @@
-{-
+{-|
 The function `goodUsername` checks whether the provided string follows the
 recommendations for a Linux username specified in the man page of `useradd`:
 
-> It is usually recommended to only use usernames that begin with a lower case letter or an underscore, followed by lower case letters, digits, underscores, or
-> dashes. They can end with a dollar sign. In regular expression terms: `[a-z_][a-z0-9_-]*[$]?`
->
-> [...]
->
-> Usernames may only be up to 32 characters long.
+> It is usually recommended to only use usernames that begin with a lower case
+  letter or an underscore, followed by lower case letters, digits, underscores,
+  or dashes. They can end with a dollar sign. In regular expression terms: `[a-z_][a-z0-9_-]*[$]?`
+  
+  \[...\]
+  
+  Usernames may only be up to 32 characters long.
+
 -}
 let L = ../src/Logic/package.dhall
 

@@ -1,4 +1,4 @@
-{-
+{-|
 [FizzBuzz](https://en.wikipedia.org/wiki/Fizz_buzz) implemented in Dhall using
 `Text` transformations.
 -}
