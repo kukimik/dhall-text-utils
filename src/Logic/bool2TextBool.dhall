@@ -1,5 +1,5 @@
-{-
-TODO
+{-|
+Given `True` returns `true`. Given `False` returns `false`.
 -}
 let TextBool = ./TextBool.dhall
 
@@ -12,6 +12,7 @@ let bool2TextBool
     = λ(b : Bool) → if b then true else false
 
 let example0 = true ≡ bool2TextBool True
+
 let example1 = false ≡ bool2TextBool False
 
 in  bool2TextBool

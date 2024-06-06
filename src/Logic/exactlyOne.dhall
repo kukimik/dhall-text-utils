@@ -1,4 +1,4 @@
-{-
+{-|
 Given a list of values of type `a` and a predicate-like
 function that maps a value of type `a` to a `TextBool` value,
 returns `true` if the predicate function returns `true` for
@@ -38,6 +38,9 @@ let example2 =
 
 let example3 =
         false
-      ≡ exactlyOne TextBool (Prelude.Function.identity TextBool) ([] : List TextBool)
+      ≡ exactlyOne
+          TextBool
+          (Prelude.Function.identity TextBool)
+          ([] : List TextBool)
 
 in  exactlyOne

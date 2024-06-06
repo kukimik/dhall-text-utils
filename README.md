@@ -209,8 +209,10 @@ or `=== Logic.false`. For example, instead of writing `Predicates.isEmpty x === 
 is mostly a matter of style. There exists another helper `Logic.QED`, that provides a "proof" for dependently typed functions:
 
 ```dhall
-f : forall (t : Text) -> Logic.isFalse (Predicates.isEmpty t) -> Text =
-    \(t : Text) -> \(_ : Logic.QED) -> [...]
+let f : forall (t : Text) -> Logic.isFalse (Predicates.isEmpty t) -> Text =
+      \(t : Text) -> \(_ : Logic.isFalse (Predicates.isEmpty t)) -> [...]
+
+in f "abc" Logic.QED
 ```
 
 The functions `Logic.any` and `Logic.all` can be used to map predicates over a list and aggregate the result using either alternative or conjunction.

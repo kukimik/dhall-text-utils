@@ -1,4 +1,4 @@
-{-
+{-|
 Given a list of `TextBool` values returns `true` if every
 element of the list is `true` and returns `false` otherwise.
 -}
@@ -19,10 +19,10 @@ let and
     = λ(vs : List TextBool) →
         not (or (Prelude.List.map TextBool TextBool not vs))
 
-let example0 = assert : true === and [ true, true ]
+let example0 = assert : true ≡ and [ true, true ]
 
-let example1 = assert : false === and [ true, false, true ]
+let example1 = assert : false ≡ and [ true, false, true ]
 
-let example2 = assert : true === and ([] : List TextBool)
+let example2 = assert : true ≡ and ([] : List TextBool)
 
 in  and

@@ -1,4 +1,4 @@
-{-
+{-|
 Given a list of `TextBool` values returns `true` if at least one
 element of the list is `true` and returns `false` otherwise.
 -}
@@ -19,7 +19,9 @@ let false = ./false.dhall
 let or
     : List TextBool → TextBool
     = λ(vs : List TextBool) →
-        { `80b81b0c0bbf55ebb04bdadd9c70094a` = nonempty2x (Prelude.Text.concatMap TextBool getVtb vs) }
+        { `80b81b0c0bbf55ebb04bdadd9c70094a` =
+            nonempty2x (Prelude.Text.concatMap TextBool getVtb vs)
+        }
 
 let example0 = true ≡ or [ false, true, true ]
 
