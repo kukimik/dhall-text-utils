@@ -29,7 +29,7 @@ let add
       λ(_ : L.isTrue (L.and [ isTextNatural n1, isTextNatural n2 ])) →
         n1 ++ n2
 
-let subtract
+let sub
     : ∀(n1 : TextNatural) →
       ∀(n2 : TextNatural) →
       L.isTrue (L.and [ isTextNatural n1, isTextNatural n2 ]) →
@@ -38,6 +38,16 @@ let subtract
       λ(n2 : TextNatural) →
       λ(_ : L.isTrue (L.and [ isTextNatural n1, isTextNatural n2 ])) →
         L.ifThenElse (P.contains n2 n1) (T.stripPrefix n2 n1) ""
+
+let mul
+    : ∀(n1 : TextNatural) →
+      ∀(n2 : TextNatural) →
+      L.isTrue (L.and [ isTextNatural n1, isTextNatural n2 ]) →
+        TextNatural
+    = λ(n1 : TextNatural) →
+      λ(n2 : TextNatural) →
+      λ(_ : L.isTrue (L.and [ isTextNatural n1, isTextNatural n2 ])) →
+        Text/replace "I" n1 n2
 
 let div
     : ∀(n1 : TextNatural) →
@@ -71,9 +81,13 @@ let mod
 
 let test1 = assert : add (n 2) (n 2) L.QED ≡ n 4
 
-let test2 = assert : subtract (n 5) (n 3) L.QED ≡ n 2
+let test2 = assert : sub (n 5) (n 3) L.QED ≡ n 2
 
-let test3 = assert : subtract (n 5) (n 7) L.QED ≡ n 0
+let test3 = assert : sub (n 5) (n 7) L.QED ≡ n 0
+
+let test4 = assert : mul (n 0) (n 4) L.QED ≡ n 0
+
+let test4 = assert : mul (n 3) (n 5) L.QED ≡ n 15
 
 let test4 = assert : div (n 14) (n 3) L.QED ≡ n 4
 
@@ -81,4 +95,4 @@ let test5 = assert : div (n 10) (n 11) L.QED ≡ n 0
 
 let test6 = assert : mod (n 10) (n 3) L.QED ≡ n 1
 
-in  { TextNatural, isTextNatural, n, add, subtract, div, mod }
+in  { TextNatural, isTextNatural, n, add, sub, mul, div, mod }
