@@ -2,7 +2,11 @@
 
 Utilities for validation and modification of `Text` values in the [Dhall](https://dhall-lang.org/) configuration language. Not recommended for use in production.
 
-The `Text` type in Dhall is opaque by design. It is impossible to inspect the value of a `Text` expression during evaluation. (One may, however, test `Text` values for equality during the type-checking phase, e.g. `assert : "abc" === "ab" ++ "c"`.) The `Text`-related language bulit-ins are also scarce: `Text/show`, `Text/replace` and the concatenation operator `++`. It turns out that using this limited toolset, and a dose of creativity, one can implement a number of functions that allow to manipulate `Text` values based on their content:
+## What is this all about? 
+
+The `Text` type in Dhall is opaque by design. It is impossible to inspect the value of a `Text` expression during evaluation. (One may, however, test `Text` values for equality during the type-checking phase, e.g. `assert : "abc" === "ab" ++ "c"`.) The `Text`-related language bulit-ins are also scarce: `Text/show`, `Text/replace` and the concatenation operator `++`.
+
+This library contains a number of functions, implemented using the above toolset and a dose of creativity, that allow one to manipulate `Text` values based on their content:
 
 ```dhall
 let L = ./src/Logic/package.dhall
@@ -106,7 +110,7 @@ have bad performance. The library was also not tested thoroughly.
 However, the library demonstrates that Dhall already has some text validation capabilities. This may be an argument to 
 have them included, in some form, in a future version of the language standard as built-in features.
 
-## How it works
+## How it works?
 
 The library makes use of several properties of the `Text` related operations. Some of them are inherent to these operations
 (e.g. the empty string being the neutral element of concatenation), some are more incidental (e.g. the escaping rules used
@@ -142,15 +146,18 @@ let ifEmptyThenElse =
         (Text/replace "x" whenNotEmpty (nonempty2x t))
 ```
 
-If we are able to implement a function (let's call it a "predicate") `hasPropertyP : Text -> Text` that converts a `Text` value `t` either to `"x"` or to `""`, depending on `t` having or not having some property `P`, then we may use the above to construct a function `f : Text -> Text` which behaves differently for
-arguments having/not having the property `P`. Moreover, we can use it to validate function arguments at the type-checking level:
+If we are able to implement a function (let's call it a "predicate") `hasPropertyP : Text -> Text` that converts a `Text` value `t` either to `"x"` or to `""`, depending on `t` having or not having some property `P`, then we may use `ifEmptyThenElse` to construct a function `ifHasPropertyPThenElse : Text -> Text -> Text` which returns either the second argument if the first argument has property `P`, and the third argument otherwise. Moreover, we can use `hasPropertyP` to validate function arguments at the type-checking level:
 
 ```dhall
 let f : forall ( t : Text ) -> ("x" === hasPropertyP t) -> SomeType =
-    \(t : Text) -> (assert : ("x" === hasPropertyP t)) -> [...]
+    \(t : Text) -> \(assert : ("x" === hasPropertyP t)) -> [...]
 ```
 
-or to write `assert`-based tests.
+or to write `assert`-based tests:
+
+```dhall
+let test = assert : "x" === hasPropertyP someVariable
+```
 
 It turns out such "predicates" exist for many properties. For example, to check whether `t` is equal to some given string, we can use:
 
@@ -178,14 +185,13 @@ let and : Text -> Text -> Text = \(t1 : Text) -> \(t2 : Text) -> not (or (not t1
 
 that work as expected when their input is either `""` or `"x"`.
 
-The `dhall-text-utils` library wraps `true` and `false` in a record type (named `TextBool`, see [`./src/Logic`](./src/Logic)) and adds some sugar
-here and there, but this is the basic idea.
+The `dhall-text-utils` library wraps `true` and `false` in a record type (named `TextBool`, see [`./src/Logic`](./src/Logic)) and adds some sugar here and there, but this is the basic idea.
 
 One other notable trick that is used in the [`stripPrefix`](./src/Transofrmations/stripPrefix.dhall) and [`stripSuffix`](./src/Transofrmations/stripSuffix.dhall) functions (and in the [histogram example](./examples/histogram.dhall)) is based on the fact that the output of `Text/show` will never contain certain substrings
 (e.g. three consecutive quotation marks) or characters (e.g. a tab or a newline, which ar converted to `\t` and `\n`). The details are left to the interested
 reader.
 
-## How is the library structured
+## How is the library structured?
 
 The library consists of several interrelated sub-packages:
 
