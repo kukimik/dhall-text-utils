@@ -9,7 +9,12 @@ let stripPrefix
       λ(text : Text) →
         let helper = "\t${Text/show text}"
 
-        in  ./foldRemove.dhall [ helper, helper ++ prefix ] (helper ++ text)
+        in  (   missing
+                  sha256:111988c88a178a1a665816d1b494701138eb4fb22c6d26e9bf6443c63e08c44e
+              ? ./foldRemove.dhall
+            )
+              [ helper, helper ++ prefix ]
+              (helper ++ text)
 
 let example0 = assert : stripPrefix "abc" "abcdef" ≡ "def"
 

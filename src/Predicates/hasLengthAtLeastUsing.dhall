@@ -12,20 +12,40 @@ Returns `false` otherwise.
 By the length of a string we understand the number of codepoints
 it consists of.
 -}
+let Prelude =
+        missing
+          sha256:397ef8d5cf55e576eab4359898f61a4e50058982aaace86268c62418d3027871
+      ? ../Prelude.dhall
 
-let Prelude = ../Prelude.dhall
+let TextBool =
+        missing
+          sha256:fa222e9b894b0a1b05a91e78290abaad53a37d69f66ad3cdb4eb8ff99d2b05c4
+      ? ../Logic/TextBool.dhall
 
-let TextBool = ../Logic/TextBool.dhall
+let isTrue =
+        missing
+          sha256:16fc04e94ba9463ad527f6e83982c8d9c6f674046e1797d93de777847c837339
+      ? ../Logic/isTrue.dhall
 
-let isTrue = ../Logic/isTrue.dhall
+let isFalse =
+        missing
+          sha256:f6ee161dbe69940a3c09dd60f5946cb5fe6e216d5064811116bd87193d06b49d
+      ? ../Logic/isFalse.dhall
 
-let isFalse = ../Logic/isFalse.dhall
+let consistsOf =
+        missing
+          sha256:2cf5d7ed4f27a88ed8f795c9b95c61f769dc9efec9beb717fb8b02f8623c5cad
+      ? ./consistsOf.dhall
 
-let consistsOf = ./consistsOf.dhall
+let contains =
+        missing
+          sha256:5901c965285fac07afeb487d88a28cfb680831d57317ff93f7193ec5a31d9195
+      ? ./contains.dhall
 
-let contains = ./contains.dhall
-
-let QED = ../Logic/QED.dhall
+let QED =
+        missing
+          sha256:ecf97ef7ad2bfa23579f9ca755e91cd12543a15b099c769003bab0524298e727
+      ? ../Logic/QED.dhall
 
 let hasLengthAtLeastUsing
     : ∀(n : Natural) →
@@ -48,7 +68,10 @@ let hasLengthAtLeastUsing
           )
 
 let example0 =
-      let ASCII = ../CharacterClasses/ASCII.dhall
+      let ASCII =
+              missing
+                sha256:a2f5fdd4ccef40ef2bc9acab701b310831f84b94ca9859294a0304598953b74c
+            ? ../CharacterClasses/ASCII.dhall
 
       in  assert : isTrue (hasLengthAtLeastUsing 6 ASCII "Hello!" QED)
 

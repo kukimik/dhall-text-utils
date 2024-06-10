@@ -24,7 +24,10 @@ let f : forall (t : Text) -> Logic.false === Predicates.isEmpty t -> Text =
 in f "abc" (assert : Logic.false === Logic.false)
 ```
 -}
-let true = ./true.dhall
+let true =
+        missing
+          sha256:098e2a4f266678afc95037a722ff69fa1c4d98c89928da1dc1b2dddb5d68a9a7
+      ? ./true.dhall
 
 let QED
     : true ≡ true

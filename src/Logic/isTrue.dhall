@@ -24,9 +24,15 @@ let f : forall (t : Text) -> Logic.true === Predicates.isASCII t -> Text =
 in f "abc" (assert : Logic.true === Logic.true)
 ```
 -}
-let TextBool = ./TextBool.dhall
+let TextBool =
+        missing
+          sha256:fa222e9b894b0a1b05a91e78290abaad53a37d69f66ad3cdb4eb8ff99d2b05c4
+      ? ./TextBool.dhall
 
-let true = ./true.dhall
+let true =
+        missing
+          sha256:098e2a4f266678afc95037a722ff69fa1c4d98c89928da1dc1b2dddb5d68a9a7
+      ? ./true.dhall
 
 let isTrue
     : ∀(v : TextBool) → Type

@@ -3,7 +3,10 @@ List of all Unicode control characters (C0 controls `\u0000` to `\u001F`,
 delete `\u007F` and C1 controls `\u0080` to `\u009F`).
 ).
 -}
-let ASCIIcontrol = ./ASCIIcontrol.dhall
+let ASCIIcontrol =
+        missing
+          sha256:555e638b2f284e3d9b978a3096d1b564788fc340ab5b637dcb9ead6d47811e6c
+      ? ./ASCIIcontrol.dhall
 
 let nonASCIIcontrol =
       [ "\u0080"
