@@ -219,21 +219,44 @@ The functions `Logic.any` and `Logic.all` can be used to map predicates over a l
 
 The package also contains a number of less notable functions.
 
-### `Predicates`
-
-XXXXXXXXXXXXXXXXXXXXXX
-
-remove flipped versions of functions
-
-
 ### `CharacterClasses`
 
-We defina a *character class* to be a list of `Text` values, each consisting of a single codepoint. For example `["a","b","3"]` and `[] : List Text` are character classes, but `["a","bc"]` is not. 
+We defina a *character class* to be a list of `Text` values, each consisting of a single codepoint. For example `["a","b","3"]` and `[] : List Text` are character classes, but `["a","bc"]` is not.
 
 The package contains definitions of several common character classes (e.g. the list of all ASCII characters, the list of ASCII digits, the list of Unicode control characters).
 
 Note that if a function in the library accepts a `List Text` value that is expected to be a charcater class, then it should be a character class. **This is not
 controlled at the type level and may lead to errors!** One should pay special attention to [Unicode characters consisting of several codepoints](https://tonsky.me/blog/unicode/#why-is-a----).
+
+### `Predicates`
+
+By a *predicate*, in the context of this library, we understand a `TextBool`-valued function. The package contains a number of predicates related to various properties of `Text` values, e.g. `Predicates.isEmpty : Text -> TextBool`, `Predicates.hasPrefix : Text -> Text -> TextBool`, `Predicates.containsOneOf : List Text -> Text -> Text`.
+
+Some of these have versions with arguments flipped, e.g. `Predicates.contains` and `Predicates.isContainedIn`, or `Predicates.hasSuffix` and `Predicates.isSuffixOf`. Some may be easily constructed using the others and the functions from the `Logic` package (e.g. `Predicates.containsOneOf` is implemented using `Logic.any` and `Predicates.isContainedIn`). I do not strive for minimality. There is at present no rule which of these derived predicates are included in the library, and which are not. One exception is that I do not want to include negations of existsing predicates. For example:
+
+```dhall
+let isNotEmpty : Text -> TextBool = \(t : Text) -> Logic.not (Predicates.isEmpty t)
+```
+
+is not going to be included in the `Predicates` package.
+
+Some of the predicates (e.g. `Predicates.consistsOf` or `Predicates.hasLengthUsing`) accept an argument that is required to be a character class (see the section above). **This is not checked at the type level!**
+
+There are a few dependently typed predicates: `Predicates.hasLengthAtLeastUsing`, `Predicates.hasLengthAtMostUsing`, `Predicates.hasLengthUsing`. These functions use the fact that a given string consists entirely of codepoints belonging to a given character class. To use these predicates you have to guarantee, at the type-checking level, that this property holds. So, for example:
+
+```dhall
+Predicates.hasLengthUsing 5 CharacterClasses.ASCII "abcde" Logic.QED === Logic.true
+```
+
+but
+
+```dhall
+Predicates.hasLengthUsing 5 CharacterClasses.ASCII "ąbćdę" Logic.QED
+```
+
+will fail.
+
+If you need to use a non-dependently typed version of these functions, then you may either try to use `Predicates.hasSubstringOfLengthAtLeastConsistingOf`. Or, when you are sure that your `Text` values consist only of character belonging to a certain class, create your own versions of these predicates, by copying the source and getting rid of the last argument.
 
 ### `Transformations`
 
