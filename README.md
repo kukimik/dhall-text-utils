@@ -181,7 +181,7 @@ that work as expected when their input is either `""` or `"x"`.
 The `dhall-text-utils` library wraps `true` and `false` in a record type (named `TextBool`, see [`./src/Logic`](./src/Logic)) and adds some sugar
 here and there, but this is the basic idea.
 
-One other notable trick that is used in the [`stripPrefix`](./src/Transofrmations/stripPrefix.dhall) and [`stripSuffix`](./src/Transofrmations/stripSuffix.dhall) functions (and in the [histogram example](`./examples/histogram.dhall`)) is based on the fact that the output of `Text/show` will never contain certain substrings
+One other notable trick that is used in the [`stripPrefix`](./src/Transofrmations/stripPrefix.dhall) and [`stripSuffix`](./src/Transofrmations/stripSuffix.dhall) functions (and in the [histogram example](./examples/histogram.dhall)) is based on the fact that the output of `Text/show` will never contain certain substrings
 (e.g. three consecutive quotation marks) or characters (e.g. a tab or a newline, which ar converted to `\t` and `\n`). The details are left to the interested
 reader.
 
