@@ -96,6 +96,7 @@ The following discussions gave me some inspiration:
 
 * https://github.com/dhall-lang/dhall-lang/issues/1035
 * https://github.com/dhall-lang/dhall-lang/pull/669#issuecomment-515748801
+* https://discourse.dhall-lang.org/t/text-manipulation-functions/176/55
 
 Note that some of the possibilities that the library gives are strongly against the philosophy of Dhall (and good programming
 practices), e.g. it allows to string-encode some of the business logic instead of keeping it at the type level.
@@ -188,7 +189,7 @@ that work as expected when their input is either `""` or `"x"`.
 The `dhall-text-utils` library wraps `true` and `false` in a record type (named `TextBool`, see [`./src/Logic`](./src/Logic)) and adds some sugar here and there, but this is the basic idea.
 
 One other notable trick that is used in the [`stripPrefix`](./src/Transofrmations/stripPrefix.dhall) and [`stripSuffix`](./src/Transofrmations/stripSuffix.dhall) functions (and in the [histogram example](./examples/histogram.dhall)) is based on the fact that the output of `Text/show` will never contain certain substrings
-(e.g. three consecutive quotation marks) or characters (e.g. a tab or a newline, which ar converted to `\t` and `\n`). The details are left to the interested
+(e.g. three consecutive quotation marks) or characters (e.g. a tab or a newline, which are converted to `\t` and `\n`). The details are left to the interested
 reader.
 
 ## How is the library structured?
